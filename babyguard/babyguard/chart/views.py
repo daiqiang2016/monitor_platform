@@ -188,10 +188,10 @@ def get_chart_info(title='title', sub_title='sub_title', yAix_title='yAix', cate
     chart_dict['legend']['align']='right'
     chart_dict['legend']['verticalAlign']='middle'
     chart_dict['legend']['borderWidth']=0
-    chart_dict['series']= []
-    cur_dict = {}
-    cur_dict['name']=title
-    cur_dict['data']=series
-    chart_dict['series'].append(cur_dict)
+    chart_dict['series']= series
+    #cur_dict = {}
+    #cur_dict['name']=title
+    #cur_dict['data']=series
+    #chart_dict['series'].append(cur_dict)
     
     return chart_dict
