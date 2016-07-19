@@ -77,7 +77,6 @@ def get_sorted_list(objs, desc, days):
 def get_crawl_chart(request):
     objs = CrawlModel.objects.all()
     descs = [e.desc for e in objs]
-    descs = [e[:16] for e in descs]
     descs = list(set(descs))
 
     days = [e.day for e in objs]
