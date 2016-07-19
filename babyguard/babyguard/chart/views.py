@@ -54,7 +54,7 @@ def get_sorted_list(infos, desc, days):
 @csrf_exempt
 def get_crawl_chart(request):
     objs = CrawlModel.objects.all()
-    infos= [(obj.day, obj.desc, obj.cnt) for obj in objs]
+    infos= [(obj.day, obj.desc[:16], obj.cnt) for obj in objs]
 
     days = [e[0] for e in infos]
     descs= [e[1] for e in infos]
