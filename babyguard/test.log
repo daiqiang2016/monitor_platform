@@ -8,3 +8,5 @@
 [ 2016-07-19 11:58:13,352 INFO views.py 93 get_crawl_chart ] series=  [{'name': '1', 'data': [1]}] 
 [ 2016-07-19 12:04:25,441 INFO views.py 92 get_crawl_chart ] days=  ['1'] 
 [ 2016-07-19 12:04:25,442 INFO views.py 93 get_crawl_chart ] series=  [{'name': '1', 'data': [1]}] 
+[ 2016-07-19 13:06:08,955 INFO views.py 92 get_crawl_chart ] days=  ['1'] 
+[ 2016-07-19 13:06:08,956 INFO views.py 93 get_crawl_chart ] series=  [{'name': '1', 'data': [1]}] 
