@@ -26,45 +26,23 @@ from babyguard.helper import pack_json_resp, objs2dict_list, update_all_fields
 from babyguard.helper import get_md5
 import util_log
 
-# Create your views here.
-@csrf_exempt
-def show(request):
-    form = []
-    if request.method == 'POST':
-        #print pyUsage.get_cur_info(), 'ret= ', ret
-        return pack_json_resp(True, 'show error', -1)
-    else:
-        pass
-    return render_to_response('main_chart.html')
-
-@csrf_exempt
-def show_video(request):
-    form = []
-    if request.method == 'POST':
-        #print pyUsage.get_cur_info(), 'ret= ', ret
-        return pack_json_resp(True, 'show error', -1)
-    else:
-        pass
-    return render_to_response('video_chart.html')
-
 @csrf_exempt
 def show_crawl(request):
     form = []
     if request.method == 'POST':
-        #print pyUsage.get_cur_info(), 'ret= ', ret
         return pack_json_resp(True, 'show error', -1)
     else:
         pass
     get_crawl_chart(None)    
     return render_to_response('crawl_chart.html')
 
-def get_sorted_list(objs, desc, days):
+def get_sorted_list(infos, desc, days):
     res_list = []
     dict_crawl = {}
     for day in days:
         dict_crawl[day] = 0
 
-    sum_list = [(e.day, e.cnt) for e in objs if e.desc == desc]
+    sum_list = [(e[0], e[2]) for e in infos if e[1] == desc]
     for day,cnt in sum_list:
         dict_crawl[day] += int(cnt)
 
@@ -76,10 +54,11 @@ def get_sorted_list(objs, desc, days):
 @csrf_exempt
 def get_crawl_chart(request):
     objs = CrawlModel.objects.all()
-    descs = [e.desc for e in objs]
-    descs = list(set(descs))
+    infos= [(obj.day, obj.desc, obj.cnt) for obj in objs]
 
-    days = [e.day for e in objs]
+    days = [e[0] for e in infos]
+    descs= [e[1] for e in infos]
+    descs= list(set(descs))
     days = list(set(days))
     days.sort()
 
@@ -87,7 +66,7 @@ def get_crawl_chart(request):
     for desc in descs:
         series.append({
             'name': desc,
-            'data': [e[1] for e in get_sorted_list(objs, desc, days)],
+            'data': [e[1] for e in get_sorted_list(infos, desc, days)],
         })
     util_log.info('days= ', days)
     util_log.info('series= ', series)
@@ -195,3 +174,25 @@ def get_chart_info(title='title', sub_title='sub_title', yAix_title='yAix', cate
     #chart_dict['series'].append(cur_dict)
     
     return chart_dict
+
+# Create your views here.
+@csrf_exempt
+def show(request):
+#    form = []
+#    if request.method == 'POST':
+#        #print pyUsage.get_cur_info(), 'ret= ', ret
+#        return pack_json_resp(True, 'show error', -1)
+#    else:
+#        pass
+    return render_to_response('main_chart.html')
+
+@csrf_exempt
+def show_video(request):
+#    form = []
+#    if request.method == 'POST':
+#        #print pyUsage.get_cur_info(), 'ret= ', ret
+#        return pack_json_resp(True, 'show error', -1)
+#    else:
+#        pass
+    return render_to_response('video_chart.html')
+
