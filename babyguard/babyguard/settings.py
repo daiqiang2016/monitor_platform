@@ -166,6 +166,7 @@ INTERNAL_IPS = ('127.0.0.1','::1','61.135.172.68','10.97.32.188','1.15.113.109',
 import redisco
 #redisco.connection_setup(host='123.206.69.25', port=6379, db=0)
 redisco.connection_setup(host='172.31.28.109', port=7000, db=0)
+#redisco.connection_setup(host='localhost', port=6379, db=0)
 #redisco.connection_setup(host='localhost', port=22121, db=0)
 #res = redisco.connection_setup(host='localhost', port=7001, db=0)
 #print (pyUsage.get_cur_info(), 'res= ', res)

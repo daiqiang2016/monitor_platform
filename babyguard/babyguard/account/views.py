@@ -18,6 +18,7 @@ import babyguard.account.sms as sms
 def gen_sms_code(username):
     e_list = ProfileModel.objects.filter(username = username)
     if len(e_list) > 0:
+        print ('e_list= ', e_list)
         e = e_list[0]
         e.sms_code = '%04d'%( random.randint(0,10000) )
         ret = e.save()
@@ -153,7 +154,7 @@ def clear_all_users(request):
     e_list = ProfileModel.objects.all()
     pre_cnt = len(e_list)
     for e in e_list:
-        e.delete()
+        if e is not None:e.delete()
     e_list = ProfileModel.objects.all()
     cur_cnt = len(e_list)    
     return JsonResponse(
