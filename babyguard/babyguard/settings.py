@@ -21,6 +21,8 @@ sys.path.extend([
     '/data/',
     '/home/daiqiang/gif_search_data/util/CoreFunction',
     '/home/daiqiang/gif_search_data/tags_index_for_gif',
+    '/Users/xinmei365/gif_search_data/util/CoreFunction',
+    '/Users/xinmei365/gif_search_data/tags_index_for_gif',
      ])  
 import pyUsage
 print (pyUsage.get_cur_info(), 'BASE_DIR= ', BASE_DIR)
