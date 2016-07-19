@@ -135,6 +135,15 @@ DEFAULT_CHARSET = 'utf-8'
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT= BASE_DIR + '/babyguard/'
+STATICFILES_DIRS = (
+    BASE_DIR + '/babyguard/' + STATIC_URL,
+)
+print ('STATICFILES_DIRS= ', STATICFILES_DIRS )
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
+    )
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.versions.VersionsPanel',
     'debug_toolbar.panels.timer.TimerPanel',
